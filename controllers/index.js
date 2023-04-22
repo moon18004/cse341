@@ -1,3 +1,3 @@
 export async function getName (req, res, next) {
-  res.json('Moon Moon')
+  res.json('Moon Moon');
 }
