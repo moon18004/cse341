@@ -1,11 +1,19 @@
 import express from 'express';
+import route from './routes/index.js';
+
+
 
 const port = 8081;
 const app = express();
 
-app.get('/', (req, res, next) => {
-  res.send('<h1>Hello World</h1>');
-});
+app.use(express.json());
+
+app.use('/', route);
+
+
+// app.get('/', (req, res, next) => {
+//   res.send('<h1>Hello World</h1>');
+// });
 
 // app.get('/hello', (req, res, next) => {
 //   res.setHeader('Content-Type', 'application/json');
@@ -21,4 +29,5 @@ app.get('/', (req, res, next) => {
 //   res.send('<h1>Not Found!</h1>');
 // });
 
-app.listen(8081);
+app.listen(8081, () => {
+  console.log('Server is running on port 8081')});
