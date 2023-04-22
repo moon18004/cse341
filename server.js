@@ -4,7 +4,7 @@ import route from './routes/index.js';
 const port = 8081;
 const app = express();
 
-app.use(express.json());
+// app.use(express.json());
 
 app.use('/', route);
 
