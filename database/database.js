@@ -6,7 +6,7 @@ export function initDb(url, callback) {
     console.log('Db is already initialized!');
     return; 
   }
-  console.log(url);
+  
 
   const client = new MongoClient(url);
 
