@@ -4,3 +4,10 @@ GET http://localhost:8081 HTTP/1.1
 GET https://cse341-2a4h.onrender.com HTTP/1.1
 
 ###
+GET http://localhost:8081/contact HTTP/1.1
+
+###
+GET http://localhost:8081/contact/644dd7e1cfa96fba2dbd1752 HTTP/1.1
+
+### 
+GET https://cse341-2a4h.onrender.com/contact HTTP/1.1
