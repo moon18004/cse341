@@ -1,7 +1,7 @@
 import express from 'express';
 import route from './routes/index.js';
 import { MongoClient } from 'mongodb';
-import {} from 'dotenv/config';
+import * as dotenv from 'dotenv';
 import contactRoute from './routes/contact.js'
 import * as database from './database/database.js';
 
@@ -10,6 +10,8 @@ import * as database from './database/database.js';
 
 // const {MongoClient} = require('mongodb');
 
+
+dotenv.config();
 const port = 8081;
 const app = express();
 const url = process.env.URI;
