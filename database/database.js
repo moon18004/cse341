@@ -1,16 +1,14 @@
-import { MongoClient } from 'mongodb';
+import MongoDb from 'mongodb';
 
 let db;
 export function initDb(url, callback) {
-  if(db){
+  if (db) {
     console.log('Db is already initialized!');
-    return; 
+    return;
   }
-  
 
-  const client = new MongoClient(url);
-
-  db = client;
+  return MongoDb.MongoClient.connect(url) //
+    .then((client) => (db = client.db('CSE341')));
 
   // MongoClient.connect(url).then((client) => {
   //   console.log(client);
@@ -22,8 +20,8 @@ export function initDb(url, callback) {
 }
 
 export function getDb() {
-  if(!db){
+  if (!db) {
     throw Error('Db not initialized');
   }
-  return db;
+  return db.collection('contacts');
 }
