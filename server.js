@@ -15,7 +15,7 @@ dotenv.config();
 const port = 8081;
 const app = express();
 const url = process.env.URI;
-// app.use(express.json());
+app.use(express.json());
 
 app.use('/', route);
 app.use('/contact', contactRoute);

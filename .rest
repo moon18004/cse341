@@ -15,3 +15,29 @@ GET http://localhost:8081/contact/644dd828cfa96fba2dbd1753 HTTP/1.1
 
 ### 
 GET https://cse341-2a4h.onrender.com/contact HTTP/1.1
+
+### Create Contact
+POST http://localhost:8081/contact HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Moon",
+  "lastName":"Moon",
+  "email": "moon@moon.com",
+  "favoriteColor":"Gold",
+  "birthday": "03/18/1990"
+}
+### 
+PUT http://localhost:8081/contact/6456c344ba87d60162373cde HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Moon23",
+  "lastName":"Moon22",
+  "email": "moon@moon.com",
+  "favoriteColor":"White",
+  "birthday": "03/18/1990"
+}
+###
+
+DELETE http://localhost:8081/contact/6456c344ba87d60162373cde HTTP/1.1
