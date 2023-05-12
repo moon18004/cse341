@@ -4,6 +4,7 @@ import { MongoClient } from 'mongodb';
 import * as dotenv from 'dotenv';
 import contactRoute from './routes/contact.js'
 import * as database from './database/database.js';
+import swaggerRoute from './routes/swagger.js';
 
 // const envVariables = process.env;
 // const {URI} = envVariables;
@@ -18,7 +19,19 @@ const url = process.env.URI;
 app.use(express.json());
 
 app.use('/', route);
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow_headers',
+    'Origin, X-Requiested-with, Content-Type, Accept, Z-key'
+  );
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+
+  next();
+})
 app.use('/contact', contactRoute);
+app.use('/', swaggerRoute)
 
 app.listen(port, () => {
   console.log('Server is running on port 8081');
