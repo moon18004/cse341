@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "My API",
-    "description": "Temple API",
+    "description": "Contact API",
     "version": "1.0.0"
   },
   "host": "cse341-2a4h.onrender.com",
@@ -11,6 +11,13 @@
     "https"
   ],
   "paths": {
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/": {
       "get": {
         "description": "",
@@ -102,13 +109,6 @@
             "description": "Not Found"
           }
         }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
       }
     }
   }

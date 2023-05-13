@@ -6,6 +6,7 @@ import contactRoute from './routes/contact.js'
 import * as database from './database/database.js';
 import swaggerRoute from './routes/swagger.js';
 
+
 // const envVariables = process.env;
 // const {URI} = envVariables;
 
@@ -16,22 +17,33 @@ dotenv.config();
 const port = 8081;
 const app = express();
 const url = process.env.URI;
-app.use(express.json());
+app
+  .use(express.json())
+  .use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+    'Access-Control-Allow_Headers',
+    'Origin, X-Requiested-With, Content-Type, Accept, Z-Key'
+    );
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    next();
+  })
+  .use('/', swaggerRoute)
+  .use('/', route)
+  .use('/contact', contactRoute);
 
-app.use('/', route);
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow_headers',
-    'Origin, X-Requiested-with, Content-Type, Accept, Z-key'
-  );
-  res.setHeader('Content-Type', 'application/json');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+  
 
-  next();
-})
-app.use('/contact', contactRoute);
-app.use('/', swaggerRoute)
+//   next();
+// });
+
+// app.use('/', swaggerRoute);
+// app.use('/', route);
+// app.use('/contact', contactRoute);
+
 
 app.listen(port, () => {
   console.log('Server is running on port 8081');
