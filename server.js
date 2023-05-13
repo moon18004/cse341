@@ -8,7 +8,7 @@ import swaggerRoute from './routes/swagger.js';
 import cors from 'cors';
 import swaggerAutogen from 'swagger-autogen';
 import {createRequire} from "module";
-import swaggerUI from 'swagger-ui-express';
+import swaggerUi from 'swagger-ui-express';
 const req = createRequire(import.meta.url);
 const swaggerDocument = req('./swagger.json');
 
@@ -23,12 +23,11 @@ const port = 8081;
 const app = express();
 const url = process.env.URI;
 app
-  .use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
+  // .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use(cors())
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
-  .use('/', route)
-  .use('/contact', contactRoute);
+  .use('/', route);
 
 // app.use((req, res, next) => {
 //   res.setHeader('Access-Control-Allow-Origin', '*');
