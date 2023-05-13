@@ -27,7 +27,7 @@ app
   .use(cors())
   .use(express.json())
   .use((req, res, next) => {
-    res.setHeader('Content-Type', 'text/html' );
+    res.setHeader('Content-Type', 'application/json' );
     next();
   })
   // .use(express.urlencoded({ extended: true }))
