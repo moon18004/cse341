@@ -24,14 +24,26 @@ export async function getById (req, res, next) {
 
 export async function create(req, res, next){
   // console.log(req.body);
-  const body = req.body;
+  const body = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
   const contact = await contactRepository.create(body);
   res.status(201).json(contact);
 
 }
 export async function update(req, res, next){
   const id = req.params.id;
-  const body = req.body;
+  const body = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
   const contact = await contactRepository.getById(id) ;
   console.log('line42', contact);
   if (!contact) {
