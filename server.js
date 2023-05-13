@@ -23,16 +23,11 @@ const port = 8081;
 const app = express();
 const url = process.env.URI;
 app
-  // .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use(cors())
   .use(express.json())
-  .use((req, res, next) => {
-    res.setHeader('Content-Type', 'application/json' );
-    next();
-  })
-  // .use(express.urlencoded({ extended: true }))
   .use('/', route);
 
+  // .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 // app.use((req, res, next) => {
 //   res.setHeader('Access-Control-Allow-Origin', '*');
   
