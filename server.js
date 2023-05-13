@@ -26,7 +26,7 @@ app
   // .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use(cors())
   .use(express.json())
-  .use(express.urlencoded({ extended: true }))
+  // .use(express.urlencoded({ extended: true }))
   .use('/', route);
 
 // app.use((req, res, next) => {
