@@ -6,7 +6,11 @@ import contactRoute from './routes/contact.js'
 import * as database from './database/database.js';
 import swaggerRoute from './routes/swagger.js';
 import cors from 'cors';
-
+import swaggerAutogen from 'swagger-autogen';
+import {createRequire} from "module";
+import swaggerUI from 'swagger-ui-express';
+const req = createRequire(import.meta.url);
+const swaggerDocument = req('./swagger.json');
 
 // const envVariables = process.env;
 // const {URI} = envVariables;
@@ -19,9 +23,10 @@ const port = 8081;
 const app = express();
 const url = process.env.URI;
 app
-  .use(express.json())
+  .use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
   .use(cors())
-  .use('/', swaggerRoute)
+  .use(express.json())
+  .use(express.urlencoded({ extended: true }))
   .use('/', route)
   .use('/contact', contactRoute);
 
