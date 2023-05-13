@@ -26,6 +26,10 @@ app
   // .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use(cors())
   .use(express.json())
+  .use((req, res, next) => {
+    res.setHeader('Content-Type', 'text/html' );
+    next();
+  })
   // .use(express.urlencoded({ extended: true }))
   .use('/', route);
 

@@ -1,6 +1,9 @@
 GET http://localhost:8081 HTTP/1.1
 
 ###
+GET http://localhost:8081/api-docs HTTP/1.1
+
+###
 GET https://cse341-2a4h.onrender.com HTTP/1.1
 
 ###
@@ -77,3 +80,7 @@ content-type: application/json
 ###
 
 DELETE https://cse341-2a4h.onrender.com/contact/645ee920891580e3841e7cb9 HTTP/1.1
+
+
+###
+GET https://cse341-2a4h.onrender.com/api-docs HTTP/1.1
