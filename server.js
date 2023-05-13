@@ -25,6 +25,10 @@ const url = process.env.URI;
 app
   .use(cors())
   .use(express.json())
+  .use((req, res, next) => {
+    res.setHeader('Content-Type', 'application/json' );
+    next();
+  })
   .use('/', route);
 
   // .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
