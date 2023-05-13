@@ -5,6 +5,7 @@ import * as dotenv from 'dotenv';
 import contactRoute from './routes/contact.js'
 import * as database from './database/database.js';
 import swaggerRoute from './routes/swagger.js';
+import cors from 'cors';
 
 
 // const envVariables = process.env;
@@ -19,11 +20,7 @@ const app = express();
 const url = process.env.URI;
 app
   .use(express.json())
-  .use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    
-    next();
-  })
+  .use(cors())
   .use('/', swaggerRoute)
   .use('/', route)
   .use('/contact', contactRoute);
